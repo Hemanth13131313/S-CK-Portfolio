@@ -68,10 +68,18 @@
 }
 
 .socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
   color: var(--foreground);
   opacity: 0.6;
   transition: opacity 0.3s ease;
   letter-spacing: 0.1em;
+}
+
+.socialIcon {
+  width: 18px;
+  height: 18px;
 }
 
 .socials a:hover {

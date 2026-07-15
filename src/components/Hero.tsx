@@ -4,10 +4,12 @@ import { motion } from 'framer-motion';
 import styles from './Hero.module.css';
 import { ArrowUpRight } from 'lucide-react';
 import MagneticButton from './MagneticButton';
+import AmbientMesh from './AmbientMesh';
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
+      <AmbientMesh />
       <header className={styles.header}>
         <div className={styles.logo}>S!CK</div>
         <nav className={styles.nav}>

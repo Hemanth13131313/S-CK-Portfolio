@@ -12,11 +12,6 @@ export default function Hero() {
       <AmbientMesh />
       <header className={styles.header}>
         <div className={styles.logo}>S!CK</div>
-        <nav className={styles.nav}>
-          <MagneticButton><a href="#work" className="magnetic">Work</a></MagneticButton>
-          <MagneticButton><a href="#about" className="magnetic">About</a></MagneticButton>
-          <MagneticButton><a href="#services" className="magnetic">Services</a></MagneticButton>
-        </nav>
         <div className={styles.contact}>
           <MagneticButton>
             <button className={`${styles.letsTalk} magnetic`}>

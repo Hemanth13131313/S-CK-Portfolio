@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 import CustomCursor from "@/components/CustomCursor";
 import Preloader from "@/components/Preloader";
+import MenuOverlay from "@/components/MenuOverlay";
 
 export default function RootLayout({
   children,
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body>
         <Preloader />
+        <MenuOverlay />
         <CustomCursor />
         <SmoothScroll>
           {children}

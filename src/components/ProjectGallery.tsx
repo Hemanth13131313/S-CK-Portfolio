@@ -69,6 +69,7 @@ function Card({ project, scrollYProgress }: { project: any, scrollYProgress: any
             src={project.image}
             alt={project.title}
             fill
+            priority={project.id === 1}
             className={styles.image}
             sizes="(max-width: 768px) 100vw, 60vw"
           />

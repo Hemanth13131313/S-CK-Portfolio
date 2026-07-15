@@ -30,7 +30,7 @@ export default function Hero() {
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            SATHVIK
+            SATVIK
           </motion.h1>
         </div>
       </div>

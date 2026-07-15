@@ -20,24 +20,14 @@ export default function Footer() {
     <footer ref={containerRef} className={styles.footerContainer}>
       <motion.div style={{ y }} className={styles.footerInner}>
         <div className={styles.content}>
-          <h2 className="text-display">
-            LET&apos;S <span className="text-display-italic text-color-primary">TALK</span>
-          </h2>
-          <div className={styles.cta}>
-            <MagneticButton>
-              <a href="mailto:hello@satvik.com" className={`${styles.emailButton} magnetic`} aria-label="Send email to Satvik">
-                hello@satvik.com <ArrowUpRight />
-              </a>
-            </MagneticButton>
-          </div>
+          <div className={styles.logoMark}></div>
         </div>
         
         <div className={styles.bottomBar}>
-          <p className="text-micro">© {new Date().getFullYear()} SATVIK KARNATI. ALL RIGHTS RESERVED.</p>
           <div className={styles.socials}>
-            <MagneticButton><a href="https://www.behance.net/satvikkarnati" target="_blank" rel="noopener noreferrer" className="magnetic text-micro" aria-label="Behance profile">Behance</a></MagneticButton>
-            <MagneticButton><a href="https://www.linkedin.com/in/satvik-karnati-31026b279/" target="_blank" rel="noopener noreferrer" className="magnetic text-micro" aria-label="LinkedIn profile">LinkedIn</a></MagneticButton>
-            <MagneticButton><a href="https://www.instagram.com/satvik._05/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" className="magnetic text-micro" aria-label="Instagram profile">Instagram</a></MagneticButton>
+            <MagneticButton><a href="https://www.behance.net/satvikkarnati" target="_blank" rel="noopener noreferrer" className="magnetic text-micro">BEHANCE</a></MagneticButton>
+            <MagneticButton><a href="https://www.linkedin.com/in/satvik-karnati-31026b279/" target="_blank" rel="noopener noreferrer" className="magnetic text-micro">LINKEDIN</a></MagneticButton>
+            <MagneticButton><a href="https://www.instagram.com/satvik._05/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" className="magnetic text-micro">INSTAGRAM</a></MagneticButton>
           </div>
         </div>
       </motion.div>

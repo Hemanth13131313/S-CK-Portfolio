@@ -21,13 +21,13 @@ export default function Home() {
         </div>
       </section>
 
-      <Process />
-
       <MaskReveal />
       
       <ProjectGallery />
       
       <Services />
+
+      <Process />
       
       <HoverList />
     </main>

@@ -2,8 +2,8 @@
   position: relative;
   height: 80vh;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
 .footerInner {
@@ -13,55 +13,43 @@
   height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-3xl);
   padding: var(--spacing-2xl) var(--spacing-xl);
 }
 
 .content {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center;
-  gap: var(--spacing-xl);
-  margin-top: 10vh;
 }
 
-.emailButton {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  font-family: var(--font-sans);
-  font-size: clamp(1rem, 2vw, 2rem);
-  color: var(--background);
-  border: 1px solid var(--background);
-  padding: var(--spacing-md) var(--spacing-xl);
-  border-radius: var(--radius-full);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.emailButton:hover {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #fff;
+.logoMark {
+  width: 24px;
+  height: 24px;
+  background-color: var(--foreground);
+  border-radius: 50%;
 }
 
 .bottomBar {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: var(--spacing-lg);
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .socials {
   display: flex;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-2xl);
+  text-align: center;
 }
 
 .socials a {
-  color: var(--background);
-  opacity: 0.7;
+  color: var(--foreground);
+  opacity: 0.6;
   transition: opacity 0.3s ease;
+  letter-spacing: 0.1em;
 }
 
 .socials a:hover {
@@ -69,9 +57,8 @@
 }
 
 @media (max-width: 768px) {
-  .bottomBar {
+  .socials {
     flex-direction: column;
-    align-items: flex-start;
     gap: var(--spacing-lg);
   }
 }

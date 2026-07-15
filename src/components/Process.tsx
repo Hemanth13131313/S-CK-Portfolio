@@ -15,7 +15,7 @@ export default function Process() {
       <div className="container">
         <div className="grid-12">
           <div className="col-span-4">
-            <h2 className="text-title">How We<br/>Work</h2>
+            <h2 className="text-title">How I do<br/>work?</h2>
           </div>
           <div className={`col-span-8 ${styles.stepsList}`}>
             {steps.map((step, index) => (

@@ -30,7 +30,27 @@ export default function Hero() {
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            SAT<span className="text-display-italic text-color-primary">VIK</span>
+            {['S', 'A', 'T'].map((letter, i) => (
+              <motion.span 
+                key={i}
+                whileHover={{ scale: 1.1, y: -20, color: "var(--color-primary)" }}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                style={{ display: "inline-block" }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+            {['V', 'I', 'K'].map((letter, i) => (
+              <motion.span 
+                key={i + 3}
+                className="text-display-italic text-color-primary"
+                whileHover={{ scale: 1.1, y: -20, color: "#fff" }}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                style={{ display: "inline-block" }}
+              >
+                {letter}
+              </motion.span>
+            ))}
           </motion.h1>
         </div>
       </div>

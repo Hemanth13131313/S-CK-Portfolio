@@ -27,7 +27,9 @@ export default function RootLayout({
         <MenuOverlay />
         <CustomCursor />
         <SmoothScroll>
-          {children}
+          <ScrollSkew>
+            {children}
+          </ScrollSkew>
         </SmoothScroll>
       </body>
     </html>

@@ -1,0 +1,62 @@
+.section {
+  padding: var(--spacing-2xl) 0;
+  background-color: var(--background);
+  position: relative;
+}
+
+.title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.listItem {
+  width: 100%;
+  padding: var(--spacing-lg) 0;
+  border-bottom: 1px solid var(--card-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.listItem:hover {
+  opacity: 0.7;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+}
+
+.role {
+  color: var(--foreground-muted);
+  font-size: 1.1rem;
+}
+
+.floatingImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 350px;
+  pointer-events: none;
+  z-index: 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.image {
+  object-fit: cover;
+}

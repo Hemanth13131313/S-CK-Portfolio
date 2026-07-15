@@ -1,0 +1,15 @@
+.textContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25em;
+}
+
+.wordWrapper {
+  overflow: hidden;
+  display: inline-flex;
+}
+
+.word {
+  display: inline-block;
+  will-change: transform, opacity;
+}

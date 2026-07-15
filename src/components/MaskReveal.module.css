@@ -1,0 +1,76 @@
+.section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--background);
+  position: relative;
+}
+
+.maskContainer {
+  width: 300px;
+  height: 120px;
+  border-radius: 100px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Add subtle glow */
+  box-shadow: 0 0 40px rgba(255, 69, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+  .maskContainer {
+    width: 600px;
+    height: 200px;
+    border-radius: 200px;
+  }
+}
+
+.videoWrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gradientBg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #0f0c29, #302b63, #24243e, #ff4500, #ff8c00);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.logoOverlay {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 800;
+  color: #ffffff;
+  mix-blend-mode: overlay;
+  opacity: 0.8;
+  letter-spacing: -0.05em;
+}

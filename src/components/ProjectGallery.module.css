@@ -1,0 +1,85 @@
+.section {
+  padding: var(--spacing-2xl) 0;
+  background-color: var(--background);
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-xl);
+  color: var(--foreground);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Make the first item span full width to create an interesting asymmetric grid */
+  .grid > .projectCard:nth-child(1) {
+    grid-column: 1 / -1;
+  }
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  group: true;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--card-bg);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projectCard:hover .image {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--spacing-lg);
+}
+
+.projectCard:hover .overlay {
+  opacity: 1;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.projectTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: var(--spacing-sm);
+}

@@ -21,7 +21,7 @@ export default function Footer() {
       <motion.div style={{ y }} className={styles.footerInner}>
         <div className={styles.content}>
           <h2 className="text-display">
-            LET'S <span className="text-display-italic text-color-primary">TALK</span>
+            LET&apos;S <span className="text-display-italic text-color-primary">TALK</span>
           </h2>
           <div className={styles.cta}>
             <MagneticButton>

@@ -1,4 +1,6 @@
-export default function NoiseOverlay() {
+import React from 'react';
+
+const NoiseOverlay = React.memo(function NoiseOverlay() {
   return (
     <div 
       style={{
@@ -14,4 +16,6 @@ export default function NoiseOverlay() {
       }}
     />
   );
-}
+});
+
+export default NoiseOverlay;

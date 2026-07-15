@@ -79,7 +79,7 @@ export default function CustomCursor() {
       className={styles.cursor}
       variants={variants}
       animate={cursorState}
-      transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
+      transition={{ type: "spring", stiffness: 350, damping: 25, mass: 0.5 }}
     >
       <span className={styles.cursorText}>{cursorState === 'view' ? 'VIEW' : ''}</span>
     </motion.div>

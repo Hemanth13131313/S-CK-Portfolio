@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-3xl) 0;
 }
 
 .header {

@@ -30,13 +30,13 @@ export default function Hero() {
               initial={{ y: '100%' }}
               whileInView={{ y: 0 }}
               viewport={{ once: false, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] as const }}
             >
               {['S', 'A', 'T'].map((letter, i) => (
                 <motion.span 
                   key={i}
                   whileHover={{ scale: 1.1, y: -20, color: "var(--color-primary)" }}
-                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                  transition={{ type: "spring", stiffness: 350, damping: 25, mass: 0.5 }}
                   style={{ display: "inline-block" }}
                 >
                   {letter}
@@ -47,7 +47,7 @@ export default function Hero() {
                   key={i + 3}
                   className="text-display-italic text-color-primary"
                   whileHover={{ scale: 1.1, y: -20, color: "#fff" }}
-                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                  transition={{ type: "spring", stiffness: 350, damping: 25, mass: 0.5 }}
                   style={{ display: "inline-block" }}
                 >
                   {letter}

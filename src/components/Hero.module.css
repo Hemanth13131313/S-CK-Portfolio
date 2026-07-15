@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: var(--spacing-lg);
-  padding-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-3xl);
 }
 
 .header {

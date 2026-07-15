@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { Inter, Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
+import Preloader from "@/components/Preloader";
+import MenuOverlay from "@/components/MenuOverlay";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
+const playfair = Playfair_Display({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
   title: "Satvik Karnati | Premium Portfolio",
   description: "Portfolio of Satvik Karnati, a designer crafting bold visual identities.",
 };
-
-import CustomCursor from "@/components/CustomCursor";
-import Preloader from "@/components/Preloader";
-import MenuOverlay from "@/components/MenuOverlay";
 
 export default function RootLayout({
   children,
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${inter.variable} ${manrope.variable} ${playfair.variable}`}>
       <body>
         <Preloader />
         <MenuOverlay />

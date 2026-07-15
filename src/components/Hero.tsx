@@ -30,17 +30,17 @@ export default function Hero() {
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            SATVIK
+            SAT<span className="text-display-italic text-color-primary">VIK</span>
           </motion.h1>
         </div>
       </div>
       
-      <div className={styles.subTextContainer}>
-        <div className={styles.subTextLeft}>
+      <div className="grid-12" style={{ marginTop: 'var(--spacing-2xl)', padding: '0 var(--spacing-md)' }}>
+        <div className="col-span-4">
           <p className="text-micro">Strategy, Design,</p>
           <p className="text-micro">Performance</p>
         </div>
-        <div className={styles.subTextRight}>
+        <div className="col-span-4" style={{ gridColumnStart: 9 }}>
           <p className="text-micro">We are a branding studio</p>
           <p className="text-micro">that helps businesses stand out.</p>
         </div>

@@ -5,8 +5,9 @@
   --color-primary: #ff4500;
   --color-secondary: #ff8c00;
   
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
 
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -86,20 +87,31 @@ html.lenis {
 .text-display {
   font-family: var(--font-display);
   font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.05em;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  font-size: clamp(3rem, 12vw, 12rem);
+  text-transform: uppercase;
+}
+
+.text-display-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }
 
 .text-title {
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: -0.03em;
+  font-size: clamp(2rem, 5vw, 4rem);
 }
 
 .text-body {
   font-family: var(--font-sans);
   line-height: 1.6;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
 }
 
 .text-micro {
@@ -107,6 +119,38 @@ html.lenis {
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   color: var(--foreground-muted);
+}
+
+/* 12-Column Editorial Grid System */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+.col-span-1 { grid-column: span 1; }
+.col-span-2 { grid-column: span 2; }
+.col-span-3 { grid-column: span 3; }
+.col-span-4 { grid-column: span 4; }
+.col-span-5 { grid-column: span 5; }
+.col-span-6 { grid-column: span 6; }
+.col-span-7 { grid-column: span 7; }
+.col-span-8 { grid-column: span 8; }
+.col-span-9 { grid-column: span 9; }
+.col-span-10 { grid-column: span 10; }
+.col-span-11 { grid-column: span 11; }
+.col-span-12 { grid-column: span 12; }
+
+@media (max-width: 768px) {
+  .grid-12 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  [class*="col-span-"] {
+    grid-column: span 4; /* Default all to full width on mobile unless specified */
+  }
 }

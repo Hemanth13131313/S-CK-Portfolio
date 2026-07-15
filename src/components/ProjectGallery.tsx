@@ -1,4 +1,8 @@
+"use client";
+
+import { useRef } from 'react';
 import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import styles from './ProjectGallery.module.css';
 
 const projects = [
@@ -26,33 +30,57 @@ const projects = [
 ];
 
 export default function ProjectGallery() {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+
+  // Moves the entire track to the left
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]);
+
   return (
-    <section className={styles.section} id="work">
-      <div className="container">
-        <h2 className={`text-title ${styles.title}`}>Selected Works</h2>
-        <div className={styles.grid}>
-          {projects.map((project) => (
-            <div key={project.id} className={styles.projectCard}>
-              <div className={styles.imageWrapper}>
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className={styles.image}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className={styles.overlay}>
-                  <div className={styles.details}>
-                    <p className={styles.category}>{project.category}</p>
-                    <p className={styles.year}>{project.year}</p>
-                  </div>
-                </div>
-              </div>
-              <h3 className={styles.projectTitle}>{project.title}</h3>
-            </div>
-          ))}
+    <section ref={targetRef} className={styles.scrollSection} id="work">
+      <div className={styles.stickyContainer}>
+        <div className={styles.header}>
+          <h2 className="text-display">Selected Works</h2>
+          <p className="text-micro">Scroll to explore</p>
         </div>
+        
+        <motion.div style={{ x }} className={styles.horizontalTrack}>
+          {projects.map((project) => (
+            <Card key={project.id} project={project} scrollYProgress={scrollYProgress} />
+          ))}
+        </motion.div>
       </div>
     </section>
+  );
+}
+
+function Card({ project, scrollYProgress }: { project: any, scrollYProgress: any }) {
+  // Add a subtle parallax effect to the image inside the card based on the same scroll progress
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const imageX = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
+
+  return (
+    <div className={`${styles.projectCard} magnetic-target`}>
+      <div className={styles.imageContainer}>
+        <motion.div style={{ scale, x: imageX }} className={styles.parallaxImage}>
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className={styles.image}
+            sizes="(max-width: 768px) 100vw, 60vw"
+          />
+        </motion.div>
+        <div className={styles.overlay}>
+          <div className={styles.details}>
+            <p className="text-micro">{project.category}</p>
+            <p className="text-micro">{project.year}</p>
+          </div>
+        </div>
+      </div>
+      <h3 className={styles.projectTitle}>{project.title}</h3>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 .scrollSection {
   position: relative;
-  height: 400vh; /* Creates the scrollable space */
   background-color: var(--background);
 }
 
@@ -105,7 +104,7 @@
 
 @media (max-width: 768px) {
   .scrollSection {
-    height: auto; /* Disable horizontal scroll on mobile */
+    height: auto; 
   }
   
   .stickyContainer {
@@ -115,15 +114,32 @@
     padding: var(--spacing-xl) 0;
   }
   
-  .horizontalTrack {
-    flex-direction: column;
-    width: 100%;
-    transform: none !important; /* Override framer motion */
-    gap: var(--spacing-xl);
+  .gallery {
+    flex-direction: row;
+    width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    transform: none !important; /* Override GSAP if it stuck */
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-md);
+  }
+
+  /* Hide scrollbar for a cleaner look */
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
   
   .projectCard {
-    width: 90vw;
+    width: 85vw;
+    flex: 0 0 85vw;
+    scroll-snap-align: center;
   }
   
   .parallaxImage {

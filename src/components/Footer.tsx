@@ -20,8 +20,19 @@ export default function Footer() {
     <footer ref={containerRef} className={styles.footerContainer}>
       <motion.div style={{ y }} className={styles.footerInner}>
         <div className={styles.content}>
-          <div className={styles.logoMark}></div>
+          <h2 className="text-display">
+            LET&apos;S <span className="text-display-italic text-color-primary">TALK</span>
+          </h2>
+          <div className={styles.cta}>
+            <MagneticButton>
+              <a href="mailto:hello@satvik.com" className={`${styles.emailButton} magnetic`} aria-label="Send email to Satvik">
+                hello@satvik.com <ArrowUpRight />
+              </a>
+            </MagneticButton>
+          </div>
         </div>
+
+        <div className={styles.logoMark}></div>
         
         <div className={styles.bottomBar}>
           <div className={styles.socials}>

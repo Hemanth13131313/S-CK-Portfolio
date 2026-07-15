@@ -71,6 +71,7 @@
   text-align: center;
   text-transform: uppercase;
   line-height: 0.85;
+  letter-spacing: 0.03em;
   margin: 0;
   padding: 0;
   color: var(--foreground);

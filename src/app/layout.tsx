@@ -5,6 +5,9 @@ import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 import Preloader from "@/components/Preloader";
 import MenuOverlay from "@/components/MenuOverlay";
+import ScrollSkew from "@/components/ScrollSkew";
+import NoiseOverlay from "@/components/NoiseOverlay";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
@@ -23,12 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable} ${playfair.variable}`}>
       <body>
+        <NoiseOverlay />
         <Preloader />
         <MenuOverlay />
         <CustomCursor />
         <SmoothScroll>
           <ScrollSkew>
             {children}
+            <Footer />
           </ScrollSkew>
         </SmoothScroll>
       </body>

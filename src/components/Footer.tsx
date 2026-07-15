@@ -1,106 +1,46 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { ArrowUpRight } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import styles from './Footer.module.css';
+import MagneticButton from './MagneticButton';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const ctaTextRef = useRef<HTMLHeadingElement>(null);
-  const massiveLogoRef = useRef<HTMLHeadingElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  });
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    if (containerRef.current && ctaTextRef.current) {
-      // Scale the massive text as user scrolls into footer
-      gsap.fromTo(ctaTextRef.current,
-        { scale: 0.8, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top bottom",
-            end: "center center",
-            scrub: true,
-          }
-        }
-      );
-    }
-
-    if (containerRef.current && massiveLogoRef.current) {
-      gsap.fromTo(massiveLogoRef.current,
-        { y: '50%', opacity: 0 },
-        {
-          y: '0%',
-          opacity: 1,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "center bottom",
-            end: "bottom bottom",
-            scrub: true,
-          }
-        }
-      );
-    }
-  }, []);
+  const y = useTransform(scrollYProgress, [0, 1], ["-50%", "0%"]);
 
   return (
-    <footer className={styles.footer} ref={containerRef}>
-      <div className={styles.ctaContainer}>
-        <h2 className={`${styles.ctaText} text-display`} ref={ctaTextRef}>
-          So, are you ready to<br />Stand out?
-        </h2>
-      </div>
-
-      <div className={styles.bottomSection}>
-        <div className={styles.left}>
-          <h3 className={styles.motto}>Design it once. Design it right.</h3>
-          <button className={styles.letsTalk}>
-            Lets Talk <ArrowUpRight size={16} />
-          </button>
-          <div className={styles.contactInfo}>
-            <p>New Business :</p>
-            <a href="mailto:hello@satvikkarnati.com">hello@satvikkarnati.com</a>
+    <footer ref={containerRef} className={styles.footerContainer}>
+      <motion.div style={{ y }} className={styles.footerInner}>
+        <div className={styles.content}>
+          <h2 className="text-display">
+            LET'S <span className="text-display-italic text-color-primary">TALK</span>
+          </h2>
+          <div className={styles.cta}>
+            <MagneticButton>
+              <a href="mailto:hello@satvik.com" className={`${styles.emailButton} magnetic`} aria-label="Send email to Satvik">
+                hello@satvik.com <ArrowUpRight />
+              </a>
+            </MagneticButton>
           </div>
         </div>
-
-        <div className={styles.right}>
-          <div className={styles.linksGrid}>
-            <div className={styles.linkColumn}>
-              <a href="#work">WORK</a>
-              <a href="#about">ABOUT</a>
-              <a href="#services">SERVICES</a>
-              <a href="#careers">CAREERS</a>
-              <a href="#contact">CONTACT</a>
-            </div>
-            <div className={styles.linkColumn}>
-              <a href="#">INSTAGRAM &#8597;</a>
-              <a href="#">LINKEDIN &#8597;</a>
-              <a href="#">X (TWITTER) &#8597;</a>
-              <a href="#">EMAIL &#8597;</a>
-            </div>
-          </div>
-          
-          <div className={styles.footerDetails}>
-            <div className={styles.location}>
-              <p>Mumbai</p>
-              <p>India, Asia</p>
-            </div>
-            <div className={styles.legal}>
-              <a href="#">Terms & Conditions</a>
-              <a href="#">Privacy Policy</a>
-            </div>
+        
+        <div className={styles.bottomBar}>
+          <p className="text-micro">© {new Date().getFullYear()} SATVIK KARNATI. ALL RIGHTS RESERVED.</p>
+          <div className={styles.socials}>
+            <MagneticButton><a href="#" className="magnetic text-micro" aria-label="Behance profile">Behance</a></MagneticButton>
+            <MagneticButton><a href="#" className="magnetic text-micro" aria-label="Twitter profile">Twitter</a></MagneticButton>
+            <MagneticButton><a href="#" className="magnetic text-micro" aria-label="LinkedIn profile">LinkedIn</a></MagneticButton>
           </div>
         </div>
-      </div>
-
-      <div className={styles.massiveLogo}>
-        <h1 className="text-display" ref={massiveLogoRef}>S!CK</h1>
-      </div>
+      </motion.div>
     </footer>
   );
 }

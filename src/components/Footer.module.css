@@ -1,138 +1,77 @@
-.footer {
-  background-color: var(--background);
-  padding: var(--spacing-2xl) var(--spacing-lg) 0;
-  display: flex;
-  flex-direction: column;
+.footerContainer {
   position: relative;
-  overflow: hidden;
-  border-top: 1px solid var(--card-border);
+  height: 80vh;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  background-color: var(--foreground);
+  color: var(--background);
 }
 
-.ctaContainer {
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: var(--spacing-2xl);
-}
-
-.ctaText {
-  font-size: clamp(3rem, 10vw, 8rem);
-  text-align: center;
-  line-height: 1;
-}
-
-.bottomSection {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-2xl);
-  z-index: 2;
-}
-
-.left {
+.footerInner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80vh;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
-  max-width: 400px;
+  justify-content: space-between;
+  padding: var(--spacing-2xl) var(--spacing-xl);
 }
 
-.motto {
-  font-size: 2rem;
-  font-family: var(--font-display);
-  font-weight: 500;
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-xl);
+  margin-top: 10vh;
 }
 
-.letsTalk {
-  background: var(--foreground);
-  color: var(--background);
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 1.1rem;
+.emailButton {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  align-self: flex-start;
-  transition: transform 0.3s ease;
+  gap: var(--spacing-sm);
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 2vw, 2rem);
+  color: var(--background);
+  border: 1px solid var(--background);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-full);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.letsTalk:hover {
-  transform: scale(1.05);
-  background: var(--color-primary);
+.emailButton:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
   color: #fff;
 }
 
-.contactInfo {
-  margin-top: var(--spacing-xl);
-  font-size: 1.1rem;
-}
-
-.contactInfo a {
-  text-decoration: underline;
-  font-weight: 600;
-}
-
-.right {
+.bottomBar {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2xl);
-  flex: 1;
-  max-width: 600px;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--spacing-lg);
 }
 
-.linksGrid {
+.socials {
   display: flex;
-  gap: var(--spacing-2xl);
+  gap: var(--spacing-lg);
 }
 
-.linkColumn {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-
-.linkColumn a {
+.socials a {
+  color: var(--background);
+  opacity: 0.7;
   transition: opacity 0.3s ease;
 }
 
-.linkColumn a:hover {
-  opacity: 0.6;
-}
-
-.footerDetails {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid var(--card-border);
-  padding-top: var(--spacing-lg);
-  color: var(--foreground-muted);
-}
-
-.location, .legal {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}
-
-.massiveLogo {
-  text-align: center;
-  margin-top: -2rem;
-}
-
-.massiveLogo h1 {
-  font-size: clamp(6rem, 25vw, 30rem);
-  line-height: 0.75;
-  color: var(--card-bg); /* very subtle */
-  margin: 0;
+.socials a:hover {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
-  .bottomSection {
+  .bottomBar {
     flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
   }
 }

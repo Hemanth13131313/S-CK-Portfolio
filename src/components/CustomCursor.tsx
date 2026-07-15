@@ -6,7 +6,7 @@ import styles from "./CustomCursor.module.css";
 
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
+  const [cursorState, setCursorState] = useState('default');
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
@@ -15,6 +15,13 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      
+      const projectCard = target.closest('[data-cursor="view"]');
+      if (projectCard) {
+        setCursorState('view');
+        return;
+      }
+
       if (
         target.tagName.toLowerCase() === 'a' || 
         target.tagName.toLowerCase() === 'button' ||
@@ -22,9 +29,9 @@ export default function CustomCursor() {
         target.closest('button') ||
         target.classList.contains('magnetic')
       ) {
-        setIsHovered(true);
+        setCursorState('hover');
       } else {
-        setIsHovered(false);
+        setCursorState('default');
       }
     };
 
@@ -41,12 +48,29 @@ export default function CustomCursor() {
     default: {
       x: mousePosition.x - 8,
       y: mousePosition.y - 8,
-      scale: 1,
+      width: 16,
+      height: 16,
+      backgroundColor: "var(--foreground)",
+      color: "transparent",
+      mixBlendMode: "difference" as any,
     },
     hover: {
       x: mousePosition.x - 24,
       y: mousePosition.y - 24,
-      scale: 1.5,
+      width: 48,
+      height: 48,
+      backgroundColor: "var(--foreground)",
+      color: "transparent",
+      mixBlendMode: "difference" as any,
+    },
+    view: {
+      x: mousePosition.x - 40,
+      y: mousePosition.y - 40,
+      width: 80,
+      height: 80,
+      backgroundColor: "var(--foreground)",
+      color: "var(--background)",
+      mixBlendMode: "normal" as any,
     }
   };
 
@@ -54,8 +78,10 @@ export default function CustomCursor() {
     <motion.div
       className={styles.cursor}
       variants={variants}
-      animate={isHovered ? "hover" : "default"}
+      animate={cursorState}
       transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
-    />
+    >
+      <span className={styles.cursorText}>{cursorState === 'view' ? 'VIEW' : ''}</span>
+    </motion.div>
   );
 }

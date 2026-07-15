@@ -62,7 +62,7 @@ function Card({ project, scrollYProgress }: { project: any, scrollYProgress: any
   const imageX = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
 
   return (
-    <div className={`${styles.projectCard} magnetic-target`}>
+    <div className={`${styles.projectCard} magnetic-target`} data-cursor="view">
       <div className={styles.imageContainer}>
         <motion.div style={{ scale, x: imageX }} className={styles.parallaxImage}>
           <Image

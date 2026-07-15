@@ -5,7 +5,6 @@ import SmoothScroll from "@/components/SmoothScroll";
 import CustomCursor from "@/components/CustomCursor";
 import Preloader from "@/components/Preloader";
 import MenuOverlay from "@/components/MenuOverlay";
-import ScrollSkew from "@/components/ScrollSkew";
 import NoiseOverlay from "@/components/NoiseOverlay";
 import Footer from "@/components/Footer";
 
@@ -31,10 +30,8 @@ export default function RootLayout({
         <MenuOverlay />
         <CustomCursor />
         <SmoothScroll>
-          <ScrollSkew>
-            {children}
-            <Footer />
-          </ScrollSkew>
+          {children}
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

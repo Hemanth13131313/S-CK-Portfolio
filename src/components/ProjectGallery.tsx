@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import styles from './ProjectGallery.module.css';
+import ScrollSkew from './ScrollSkew';
 
 const projects = [
   {
@@ -46,11 +47,13 @@ export default function ProjectGallery() {
           <p className="text-micro">Scroll to explore</p>
         </div>
         
-        <motion.div style={{ x }} className={styles.horizontalTrack}>
-          {projects.map((project) => (
-            <Card key={project.id} project={project} scrollYProgress={scrollYProgress} />
-          ))}
-        </motion.div>
+        <ScrollSkew>
+          <motion.div style={{ x }} className={styles.gallery}>
+            {projects.map((project) => (
+              <Card key={project.id} project={project} scrollYProgress={scrollYProgress} />
+            ))}
+          </motion.div>
+        </ScrollSkew>
       </div>
     </section>
   );

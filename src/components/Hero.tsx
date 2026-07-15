@@ -5,6 +5,7 @@ import styles from './Hero.module.css';
 import { ArrowUpRight } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 import AmbientMesh from './AmbientMesh';
+import ScrollSkew from './ScrollSkew';
 
 export default function Hero() {
   return (
@@ -21,39 +22,41 @@ export default function Hero() {
         </div>
       </header>
 
-      <div className={styles.mainTitleContainer}>
-        <div style={{ overflow: 'hidden' }}>
-          <motion.h1 
-            className={`${styles.mainTitle} text-display`}
-            initial={{ y: '100%' }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {['S', 'A', 'T'].map((letter, i) => (
-              <motion.span 
-                key={i}
-                whileHover={{ scale: 1.1, y: -20, color: "var(--color-primary)" }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                style={{ display: "inline-block" }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-            {['V', 'I', 'K'].map((letter, i) => (
-              <motion.span 
-                key={i + 3}
-                className="text-display-italic text-color-primary"
-                whileHover={{ scale: 1.1, y: -20, color: "#fff" }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                style={{ display: "inline-block" }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-          </motion.h1>
+      <ScrollSkew>
+        <div className={styles.mainTitleContainer}>
+          <div style={{ overflow: 'hidden' }}>
+            <motion.h1 
+              className={`${styles.mainTitle} text-display`}
+              initial={{ y: '100%' }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: false, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {['S', 'A', 'T'].map((letter, i) => (
+                <motion.span 
+                  key={i}
+                  whileHover={{ scale: 1.1, y: -20, color: "var(--color-primary)" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                  style={{ display: "inline-block" }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+              {['V', 'I', 'K'].map((letter, i) => (
+                <motion.span 
+                  key={i + 3}
+                  className="text-display-italic text-color-primary"
+                  whileHover={{ scale: 1.1, y: -20, color: "#fff" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                  style={{ display: "inline-block" }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </motion.h1>
+          </div>
         </div>
-      </div>
+      </ScrollSkew>
       
       <div className="grid-12" style={{ marginTop: 'var(--spacing-2xl)', padding: '0 var(--spacing-md)' }}>
         <div className="col-span-4">

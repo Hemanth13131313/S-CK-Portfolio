@@ -1,10 +1,10 @@
 import Hero from '@/components/Hero';
 import MaskReveal from '@/components/MaskReveal';
 import TextReveal from '@/components/TextReveal';
+import Process from '@/components/Process';
 import ProjectGallery from '@/components/ProjectGallery';
 import Services from '@/components/Services';
 import HoverList from '@/components/HoverList';
-import Footer from '@/components/Footer';
 import styles from './page.module.css';
 
 export default function Home() {
@@ -21,6 +21,8 @@ export default function Home() {
         </div>
       </section>
 
+      <Process />
+
       <MaskReveal />
       
       <ProjectGallery />
@@ -28,8 +30,6 @@ export default function Home() {
       <Services />
       
       <HoverList />
-      
-      <Footer />
     </main>
   );
 }

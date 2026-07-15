@@ -1,11 +1,9 @@
 .section {
   padding: var(--spacing-2xl) 0;
   background-color: var(--background);
-  position: relative;
 }
 
 .title {
-  font-size: clamp(3rem, 6vw, 5rem);
   margin-bottom: var(--spacing-xl);
   text-align: center;
 }
@@ -13,35 +11,66 @@
 .list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 800px;
-  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
 }
 
 .listItem {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: var(--spacing-lg) 0;
-  border-bottom: 1px solid var(--card-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: padding 0.4s ease;
+}
+
+.nameRole {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
+  width: 100%;
 }
 
 .listItem:hover {
-  opacity: 0.7;
+  padding: var(--spacing-xl) 0;
 }
 
 .name {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 500;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  transition: color 0.4s ease;
+  flex: 1;
 }
 
 .role {
+  font-family: var(--font-sans);
+  font-size: 1rem;
   color: var(--foreground-muted);
-  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.quoteContainer {
+  overflow: hidden;
+  max-width: 60%;
+  margin-top: var(--spacing-sm);
+}
+
+.quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-style: italic;
+  color: var(--color-primary);
+  line-height: 1.4;
+  padding-top: var(--spacing-md);
+}
+
+.listItem:hover .name {
+  color: var(--color-primary);
 }
 
 .floatingImage {
@@ -49,14 +78,30 @@
   top: 0;
   left: 0;
   width: 300px;
-  height: 350px;
+  height: 400px;
   pointer-events: none;
-  z-index: 10;
+  z-index: 1;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
 .image {
   object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .nameRole {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .quoteContainer {
+    max-width: 100%;
+  }
+  
+  .floatingImage {
+    display: none; /* Disable floating image on mobile */
+  }
 }

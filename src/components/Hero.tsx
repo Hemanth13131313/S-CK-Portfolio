@@ -63,6 +63,13 @@ export default function Hero() {
           <p className="text-micro">Strategy, Design,</p>
           <p className="text-micro">Performance</p>
         </div>
+        <div className="col-span-4 text-center" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <MagneticButton>
+            <a href="#work" className={`${styles.letsTalk} magnetic`} style={{ padding: '0.75rem 2rem', border: '1px solid var(--foreground)', borderRadius: 'var(--radius-full)' }}>
+              View Selected Work
+            </a>
+          </MagneticButton>
+        </div>
         <div className="col-span-4" style={{ gridColumnStart: 9 }}>
           <p className="text-micro">We are a branding studio</p>
           <p className="text-micro">that helps businesses stand out.</p>

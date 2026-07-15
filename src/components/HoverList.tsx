@@ -6,9 +6,9 @@ import { motion } from 'framer-motion';
 import styles from './HoverList.module.css';
 
 const collaborators = [
-  { id: 1, name: 'Alex Thompson', role: 'Founder, TechVision', image: '/images/portrait_one_1784088489725.png' },
-  { id: 2, name: 'Sarah Jenkins', role: 'Creative Director', image: '/images/portrait_two_1784088503720.png' },
-  { id: 3, name: 'David Chen', role: 'Head of Design', image: '/images/portrait_three_1784088590703.png' },
+  { id: 1, name: 'Alex Thompson', role: 'Founder, TechVision', quote: '[Testimonial: 1-2 sentence outcome-based quote goes here about exactly how the branding led to X% growth or successfully launched the product.]', image: '/images/portrait_one_1784088489725.png' },
+  { id: 2, name: 'Sarah Jenkins', role: 'Creative Director', quote: '[Testimonial: 1-2 sentence outcome-based quote goes here regarding the seamless collaboration and the award-winning design execution.]', image: '/images/portrait_two_1784088503720.png' },
+  { id: 3, name: 'David Chen', role: 'Head of Design', quote: '[Testimonial: 1-2 sentence outcome-based quote goes here detailing the exact strategic pivot that helped the brand stand out in a saturated market.]', image: '/images/portrait_three_1784088590703.png' },
 ];
 
 export default function HoverList() {
@@ -38,8 +38,22 @@ export default function HoverList() {
               className={styles.listItem}
               onMouseEnter={() => setActiveItem(collab.id)}
             >
-              <h3 className={styles.name}>{collab.name}</h3>
-              <p className={styles.role}>{collab.role}</p>
+              <div className={styles.nameRole}>
+                <h3 className={styles.name}>{collab.name}</h3>
+                <p className={styles.role}>{collab.role}</p>
+              </div>
+              
+              <motion.div 
+                className={styles.quoteContainer}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ 
+                  opacity: activeItem === collab.id ? 1 : 0,
+                  height: activeItem === collab.id ? 'auto' : 0
+                }}
+                transition={{ duration: 0.4 }}
+              >
+                <p className={styles.quote}>{collab.quote}</p>
+              </motion.div>
             </div>
           ))}
         </div>

@@ -9,6 +9,11 @@ export default function Preloader() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    if (sessionStorage.getItem('sick_visited')) {
+      setIsLoading(false);
+      return;
+    }
+
     // Prevent scrolling while preloader is active
     document.body.style.overflow = 'hidden';
     
@@ -17,6 +22,7 @@ export default function Preloader() {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
+          sessionStorage.setItem('sick_visited', 'true');
           setTimeout(() => {
             setIsLoading(false);
             document.body.style.overflow = '';

@@ -56,7 +56,7 @@ export default function Services() {
       <div className="container">
         <div className={styles.header}>
           <h2 className={`text-title ${styles.title}`}>Services We provide</h2>
-          <a href="#" className={styles.link}>Learn More &rarr;</a>
+          <a href="#work" className={styles.link}>Learn More &rarr;</a>
         </div>
         <motion.div 
           className={styles.grid}

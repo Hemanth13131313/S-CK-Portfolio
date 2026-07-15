@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import styles from './Hero.module.css';
 import { ArrowUpRight } from 'lucide-react';
+import MagneticButton from './MagneticButton';
 
 export default function Hero() {
   return (
@@ -10,14 +11,16 @@ export default function Hero() {
       <header className={styles.header}>
         <div className={styles.logo}>S!CK</div>
         <nav className={styles.nav}>
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
+          <MagneticButton><a href="#work" className="magnetic">Work</a></MagneticButton>
+          <MagneticButton><a href="#about" className="magnetic">About</a></MagneticButton>
+          <MagneticButton><a href="#services" className="magnetic">Services</a></MagneticButton>
         </nav>
         <div className={styles.contact}>
-          <button className={styles.letsTalk}>
-            Lets Talk <ArrowUpRight size={16} />
-          </button>
+          <MagneticButton>
+            <button className={`${styles.letsTalk} magnetic`}>
+              Lets Talk <ArrowUpRight size={16} />
+            </button>
+          </MagneticButton>
         </div>
       </header>
 
@@ -37,12 +40,12 @@ export default function Hero() {
       
       <div className={styles.subTextContainer}>
         <div className={styles.subTextLeft}>
-          <p>Strategy, Design,</p>
-          <p>Performance</p>
+          <p className="text-micro">Strategy, Design,</p>
+          <p className="text-micro">Performance</p>
         </div>
         <div className={styles.subTextRight}>
-          <p>We are a branding studio</p>
-          <p>that helps businesses stand out.</p>
+          <p className="text-micro">We are a branding studio</p>
+          <p className="text-micro">that helps businesses stand out.</p>
         </div>
       </div>
     </section>

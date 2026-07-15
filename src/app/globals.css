@@ -29,7 +29,7 @@
 
 /* Force Dark Mode for this specific premium look */
 :root {
-  --background: #050505;
+  --background: #0a0a0a;
   --foreground: #f4f4f5;
   --foreground-muted: #a1a1aa;
   
@@ -86,18 +86,27 @@ html.lenis {
 .text-display {
   font-family: var(--font-display);
   font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.04em;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
 }
 
 .text-title {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .text-body {
   font-family: var(--font-sans);
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+.text-micro {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--foreground-muted);
 }

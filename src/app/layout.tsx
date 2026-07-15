@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "Portfolio of Satvik Karnati, a designer crafting bold visual identities.",
 };
 
+import CustomCursor from "@/components/CustomCursor";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body>
+        <CustomCursor />
         <SmoothScroll>
           {children}
         </SmoothScroll>

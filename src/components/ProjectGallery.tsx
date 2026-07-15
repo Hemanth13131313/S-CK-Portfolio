@@ -42,6 +42,7 @@ const projects = [
 export default function ProjectGallery() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -52,48 +53,56 @@ export default function ProjectGallery() {
     window.addEventListener('resize', checkMobile);
 
     const initScrollTrigger = () => {
-      if (isMobile || !sectionRef.current || !trackRef.current) return;
+      if (isMobile || !sectionRef.current || !trackRef.current || !headerRef.current) return;
 
       const ctx = gsap.context(() => {
-        const getHorizontalDistance = () => {
-          if (!trackRef.current) return 0;
-          return Math.max(0, trackRef.current.scrollWidth - window.innerWidth);
-        };
+        // Initial Layer States using functions so they refresh correctly
+        gsap.set(headerRef.current, { x: 0, opacity: 1 });
+        gsap.set(trackRef.current, { x: () => window.innerWidth });
+        
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+            fastScrollEnd: true,
+            invalidateOnRefresh: true,
+            start: "top top",
+            end: () => `+=${trackRef.current?.scrollWidth || 0}`,
+          }
+        });
 
-        const horizontalDistance = getHorizontalDistance();
+        tl.addLabel("intro")
+          .to(headerRef.current, {
+            x: () => -((headerRef.current?.offsetWidth || 0) + window.innerWidth * 0.1), 
+            opacity: 0,
+            ease: "power2.inOut",
+            duration: 0.3 // Use relative percentage durations, ScrollTrigger scales them automatically!
+          }, "intro")
+          
+          .to(trackRef.current, {
+            x: () => -((trackRef.current?.scrollWidth || 0) - window.innerWidth),
+            ease: "none", 
+            duration: 0.9 
+          }, "intro+=0.1");
 
-        if (horizontalDistance > 0) {
-          const tl = gsap.to(trackRef.current, {
-            x: () => -getHorizontalDistance(),
+        // Child Parallax using containerAnimation on the master timeline
+        const images = gsap.utils.toArray<HTMLElement>('.parallaxImageTarget');
+        images.forEach((el) => {
+          gsap.to(el, {
+            x: "15%",
             ease: "none",
             scrollTrigger: {
-              trigger: sectionRef.current,
-              pin: true,
-              scrub: 1,
-              anticipatePin: 1,
-              fastScrollEnd: true,
+              trigger: el.parentElement,
+              containerAnimation: tl,
+              start: "left right",
+              end: "right left",
+              scrub: true,
               invalidateOnRefresh: true,
-              start: "top top",
-              end: () => `+=${getHorizontalDistance()}`,
             }
           });
-
-          // Child Parallax using containerAnimation
-          const images = gsap.utils.toArray<HTMLElement>('.parallaxImageTarget');
-          images.forEach((el) => {
-            gsap.to(el, {
-              x: "10%",
-              ease: "none",
-              scrollTrigger: {
-                trigger: el.parentElement,
-                containerAnimation: tl,
-                start: "left right",
-                end: "right left",
-                scrub: true,
-              }
-            });
-          });
-        }
+        });
       }, sectionRef);
 
       return ctx;
@@ -115,18 +124,18 @@ export default function ProjectGallery() {
   return (
     <section ref={sectionRef} className={styles.scrollSection} id="work">
       <div className={styles.stickyContainer}>
-        <div className={styles.header}>
+        {/* Layer 1: Title Header */}
+        <div ref={headerRef} className={styles.header}>
           <h2 className="text-display">Selected Works</h2>
           <p className="text-micro">Scroll to explore</p>
         </div>
         
-        <ScrollSkew>
-          <div ref={trackRef} className={styles.gallery}>
-            {projects.map((project) => (
-              <Card key={project.id} project={project} />
-            ))}
-          </div>
-        </ScrollSkew>
+        {/* Layer 2: Horizontal Project Track */}
+        <div ref={trackRef} className={styles.gallery}>
+          {projects.map((project) => (
+            <Card key={project.id} project={project} />
+          ))}
+        </div>
       </div>
     </section>
   );

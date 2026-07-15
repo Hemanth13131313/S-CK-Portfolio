@@ -35,9 +35,9 @@ export default function Footer() {
         <div className={styles.bottomBar}>
           <p className="text-micro">© {new Date().getFullYear()} SATVIK KARNATI. ALL RIGHTS RESERVED.</p>
           <div className={styles.socials}>
-            <MagneticButton><a href="#" className="magnetic text-micro" aria-label="Behance profile">Behance</a></MagneticButton>
-            <MagneticButton><a href="#" className="magnetic text-micro" aria-label="Twitter profile">Twitter</a></MagneticButton>
-            <MagneticButton><a href="#" className="magnetic text-micro" aria-label="LinkedIn profile">LinkedIn</a></MagneticButton>
+            <MagneticButton><a href="https://www.behance.net/satvikkarnati" target="_blank" rel="noopener noreferrer" className="magnetic text-micro" aria-label="Behance profile">Behance</a></MagneticButton>
+            <MagneticButton><a href="https://www.linkedin.com/in/satvik-karnati-31026b279/" target="_blank" rel="noopener noreferrer" className="magnetic text-micro" aria-label="LinkedIn profile">LinkedIn</a></MagneticButton>
+            <MagneticButton><a href="https://www.instagram.com/satvik._05/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" className="magnetic text-micro" aria-label="Instagram profile">Instagram</a></MagneticButton>
           </div>
         </div>
       </motion.div>

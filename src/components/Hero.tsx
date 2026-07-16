@@ -70,7 +70,7 @@ export default function Hero() {
             </a>
           </MagneticButton>
         </div>
-        <div className="col-span-4" style={{ gridColumnStart: 9 }}>
+        <div className="col-span-4">
           <p className="text-micro">We are a branding studio</p>
           <p className="text-micro">that helps businesses stand out.</p>
         </div>

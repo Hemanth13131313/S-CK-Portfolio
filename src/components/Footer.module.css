@@ -91,4 +91,12 @@
     flex-direction: column;
     gap: var(--spacing-lg);
   }
+
+  .footerInner {
+    gap: var(--spacing-md);
+  }
+
+  .content {
+    gap: var(--spacing-sm);
+  }
 }
